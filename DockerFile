@@ -1,16 +1,15 @@
 FROM ubuntu:latest AS build
 
-RUN apt-get update -y && apt-get install -y wget gnupg \
-    && apt-get install -y openjdk-17-jdk gradle
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+COPY . .
 
-COPY . /build
-
-RUN cd /build && ./gradlew bootJar --no-gradle-daemon --no-daemon
+RUN ./gradlew bootJar --no-daemon
 
 FROM openjdk:17-jdk-slim
 
 EXPOSE 8080
 
-COPY --from=build /build/build/libs/*.jar app.jar
+COPY --from=build /build/libs/flightapp-1.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
