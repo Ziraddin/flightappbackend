@@ -6,7 +6,8 @@ COPY . .
 
 RUN apt-get update && apt-get install -y dos2unix && dos2unix gradlew
 RUN find ./ -name "*.java" | xargs dos2unix
-RUN ./gradlew build
+RUN ./gradlew --version
+RUN ./gradlew build --stacktrace
 
 FROM openjdk:17-jdk-slim
 
