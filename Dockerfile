@@ -12,7 +12,7 @@ WORKDIR /app
 COPY . .
 
 # Build the Spring Boot application
-RUN ./gradlew --no-daemon bootJar
+RUN ./gradlew build
 
 # Stage 2: Production Stage
 FROM openjdk:17-jdk-slim
