@@ -4,6 +4,8 @@ RUN apt-get update
 RUN apt-get install openjdk-17-jdk -y
 COPY . .
 
+RUN apt-get update && apt-get install -y dos2unix && dos2unix gradlew
+RUN find ./ -name "*.java" | xargs dos2unix
 RUN ./gradlew build
 
 FROM openjdk:17-jdk-slim
