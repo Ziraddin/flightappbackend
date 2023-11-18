@@ -21,6 +21,6 @@ WORKDIR /app
 EXPOSE 8080
 
 # Copy the JAR from the build stage to the final image
-COPY --from=build /app/build/libs/your-actual-jar-name.jar app.jar
+COPY --from=build /build/libs/flightapp-1.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
