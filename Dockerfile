@@ -1,14 +1,15 @@
-# Use the official OpenJDK base image with Alpine Linux
 FROM ubuntu:latest AS build
 
-# Set the working directory in the container
-WORKDIR /app
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+COPY . .
 
-# Copy the application JAR file into the container at /app
-COPY build/libs/flightapp-1.jar /app/app.jar
+RUN ./gradlew bootJar --no-daemon
 
-# Expose the port that the application will run on
+FROM openjdk:17-jdk-slim
+
 EXPOSE 8080
 
-# Specify the command to run the application
-CMD ["java", "-jar", "app.jar"]
+COPY --from=build /build/libs/flightapp-1.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
