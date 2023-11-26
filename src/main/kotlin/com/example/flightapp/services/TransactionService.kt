@@ -21,17 +21,16 @@ class TransactionService(val transactionRepository: TransactionRepository) {
     fun updateTransaction(id: Int, transaction: Transaction): Transaction {
         val transactionToUpdate = transactionRepository.findById(id).get()
         transactionToUpdate.apply {
-            date = transaction.date
-            flightNumber = transaction.flightNumber
-            baggage = transaction.baggage
-            seatNumber = transaction.seatNumber
+            date = transaction.date ?: date
+            flightNumber = transaction.flightNumber ?: flightNumber
+            baggage = transaction.baggage ?: baggage
+            seatNumber = transaction.seatNumber ?: seatNumber
         }
         return transactionRepository.save(transactionToUpdate)
     }
 
-    fun getTransactionsByUserId(userId: Int): List<Transaction> {
-        return transactionRepository.findByUserId(userId)
-    }
+    fun getTransactionsByUserId(userid: Int) =
+        transactionRepository.findByUserId(userid)
 
     fun deleteTransaction(id: Int) {
         transactionRepository.deleteById(id)

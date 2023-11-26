@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface TransactionRepository : CrudRepository<Transaction, Int> {
-    fun findByUserId(userId: Int): List<Transaction>
+    fun findByUserId(userid: Int): List<Transaction>
 }

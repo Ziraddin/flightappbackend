@@ -3,20 +3,20 @@ package com.example.flightapp.dtos
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import org.springframework.data.relational.core.mapping.Table
-
 @Entity
-@Table(name = "user")
-data class User(
+@Table(name = "flight")
+data class Flight(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int,
-    var firstname: String? = null,
-    var lastname: String? = null,
-    var email: String? = null,
-    @JsonIgnore
-    var password: String? = null,
-    var paymentMethod: String? = null,
-    @OneToMany(mappedBy = "user")
+    val flightNumber: String? = null,
+    var departure: String? = null,
+    var arrival: String? = null,
+    var departureTime: String? = null,
+    var arrivalTime: String? = null,
+    var price: Double? = null,
+    val company: String? = null,
+    @OneToMany(mappedBy = "flight")
     @JsonIgnore
     val transactions: List<Transaction>? = null
 )

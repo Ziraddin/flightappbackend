@@ -21,11 +21,11 @@ class UserService(val userRepository: UserRepository) {
     fun updateUser(id: Int, user: User): User {
         val userToUpdate = userRepository.findById(id).get()
         userToUpdate.apply {
-            firstname = user.firstname
-            lastname = user.lastname
-            email = user.email
-            password = user.password
-            paymentMethod = user.paymentMethod
+            firstname = user.firstname ?: firstname
+            lastname = user.lastname ?: lastname
+            email = user.email ?: email
+            password = user.password ?: password
+            paymentMethod = user.paymentMethod ?: paymentMethod
         }
         return userRepository.save(userToUpdate)
     }

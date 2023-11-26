@@ -11,14 +11,18 @@ class TransactionController(val transactionService: TransactionService) {
     @GetMapping("/getAllTransactions")
     fun getAllTransactions() = transactionService.getAllTransactions()
 
-    @GetMapping("/getTransaction")
+    @GetMapping("/getTransactionById")
     fun getTransactionById(@RequestParam id: Int) = transactionService.getTransactionById(id)
 
     @GetMapping("/getTransactionsByUserId")
-    fun getTransactionsByUserId(@RequestParam userId: Int) = transactionService.getTransactionsByUserId(userId)
+    fun getTransactionsByUserId(@RequestParam userid: Int) = transactionService.getTransactionsByUserId(userid)
 
     @PostMapping("/addTransaction")
     fun createTransaction(@RequestBody transaction: Transaction) = transactionService.createTransaction(transaction)
+
+    @PutMapping("/updateTransaction")
+    fun updateTransaction(@RequestParam id: Int, @RequestBody transaction: Transaction) =
+        transactionService.updateTransaction(id, transaction)
 
     @DeleteMapping("/deleteTransaction")
     fun deleteTransaction(@RequestParam id: Int) = transactionService.deleteTransaction(id)
