@@ -15,8 +15,10 @@ data class User(
     var email: String? = null,
     @JsonIgnore
     var password: String? = null,
-    var paymentMethod: String? = null,
     @OneToMany(mappedBy = "user")
     @JsonIgnore
-    val transactions: List<Transaction>? = null
+    val transactions: List<Transaction>? = null,
+    @ManyToOne
+    @JoinColumn(name = "paymentid")
+    val payment: Payment
 )

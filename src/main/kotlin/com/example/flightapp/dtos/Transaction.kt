@@ -8,7 +8,7 @@ import java.sql.Date
 @Table(name = "transaction")
 data class Transaction(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
     var date: Date? = null,
     var flightNumber: String? = null,
@@ -19,5 +19,5 @@ data class Transaction(
     val user: User,
     @ManyToOne
     @JoinColumn(name = "flightid")
-    val flight: Flight
+    val flight: Flight,
 )
