@@ -7,10 +7,10 @@ import jakarta.persistence.*
 @Table(name = "payment")
 data class Payment(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
     var paymentType: String? = null,
     @OneToMany(mappedBy = "payment")
     @JsonIgnore
-    val transactions: List<Transaction>? = null
+    val users: List<User>? = null
 )

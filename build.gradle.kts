@@ -38,6 +38,9 @@ dependencies {
     runtimeOnly("com.mysql:mysql-connector-j")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    implementation("org.mariadb.jdbc:mariadb-java-client:latest.release")
+
 }
 
 tasks.withType<KotlinCompile> {

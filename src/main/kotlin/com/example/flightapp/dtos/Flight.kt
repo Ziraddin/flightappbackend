@@ -7,7 +7,7 @@ import org.springframework.data.relational.core.mapping.Table
 @Table(name = "flight")
 data class Flight(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
     val flightNumber: String? = null,
     var departure: String? = null,
