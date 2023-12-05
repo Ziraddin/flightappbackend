@@ -11,7 +11,21 @@ class UserController(val userService: UserService) {
     fun getAllUsers() = userService.getAllUsers()
 
     @GetMapping("/getUser")
-    fun getUserById(@RequestParam id: Int) = userService.getUserById(id)
+    fun getUserById(@RequestParam firstname: String, @RequestParam lastname: String, @RequestParam email: String) =
+        userService.getUserByFirstnameAndLastnameAndEmail(
+            firstname,
+            lastname,
+            email
+        )
+
+    @GetMapping("/getUserByFirstname")
+    fun getUserByFirstname(@RequestParam firstname: String) = userService.getUserByFirstname(firstname)
+
+    @GetMapping("/getUserByLastname")
+    fun getUserByLastname(@RequestParam lastname: String) = userService.getUserByLastname(lastname)
+
+    @GetMapping("/getUserByEmail")
+    fun getUserByEmail(@RequestParam email: String) = userService.getUserByEmail(email)
 
     @PostMapping("/addUser")
     fun createUser(@RequestBody user: User) = userService.createUser(user)

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class FlightService(val flightRepository: FlightRepository) {
     fun getFlights(arrival: String, departure: String, departureTime: String, arrivalTime: String) =
-        flightRepository.findByArrivalAndDepartureAndDepartureTimeAndArrivalTime(
+        flightRepository.findByArrivalAndDepartureAndDepartureTimeAndArrivalTimeContains(
             arrival,
             departure,
             departureTime,
@@ -15,7 +15,7 @@ class FlightService(val flightRepository: FlightRepository) {
         )
 
     fun getFlights(arrival: String, departure: String, departureTime: String) =
-        flightRepository.findByArrivalAndDepartureAndDepartureTime(
+        flightRepository.findByArrivalAndDepartureAndDepartureTimeContains(
             arrival,
             departure,
             departureTime
