@@ -11,7 +11,6 @@ data class Transaction(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
     var date: Date? = null,
-    var flightNumber: String? = null,
     var baggage: String? = null,
     var seatNumber: String? = null,
     @ManyToOne
