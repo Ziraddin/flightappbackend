@@ -20,5 +20,5 @@ data class User(
     val transactions: List<Transaction>? = null,
     @ManyToOne
     @JoinColumn(name = "paymentid")
-    val payment: Payment? = null
+    var payment: Payment? = null
 )
