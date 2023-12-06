@@ -22,7 +22,6 @@ class TransactionService(val transactionRepository: TransactionRepository) {
         val transactionToUpdate = transactionRepository.findById(id).get()
         transactionToUpdate.apply {
             date = transaction.date ?: date
-            flightNumber = transaction.flightNumber ?: flightNumber
             baggage = transaction.baggage ?: baggage
             seatNumber = transaction.seatNumber ?: seatNumber
         }
