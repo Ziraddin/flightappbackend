@@ -41,7 +41,7 @@ class UserService(val userRepository: UserRepository) {
             lastname = user.lastname ?: lastname
             email = user.email ?: email
             password = user.password ?: password
-            payment?.id = user.payment?.id ?: payment?.id
+            payment = user.payment ?: payment
         }
         return userRepository.save(userToUpdate)
     }
