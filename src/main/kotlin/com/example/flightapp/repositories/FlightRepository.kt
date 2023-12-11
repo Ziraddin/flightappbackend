@@ -7,14 +7,14 @@ import org.springframework.stereotype.Repository
 @Repository
 interface FlightRepository : CrudRepository<Flight, Int> {
     //This method is for one way
-    fun findByArrivalAndDepartureAndDepartureTime(
+    fun findByArrivalAndDepartureAndDepartureTimeContains(
         arrival: String,
         departure: String,
         departureTime: String
     ): List<Flight>
 
-    //This method is for round trip
-    fun findByArrivalAndDepartureAndDepartureTimeAndArrivalTime(
+    // This method is for round trip
+    fun findByArrivalAndDepartureAndDepartureTimeAndArrivalTimeContains(
         arrival: String,
         departure: String,
         departureTime: String,

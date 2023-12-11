@@ -10,8 +10,24 @@ class UserService(val userRepository: UserRepository) {
         return userRepository.findAll().toList()
     }
 
-    fun getUserById(id: Int): User {
-        return userRepository.findById(id).get()
+    fun getUserByFirstname(firstname: String): List<User> {
+        return userRepository.findByFirstnameContainingIgnoreCase(firstname)
+    }
+
+    fun getUserByLastname(lastname: String): List<User> {
+        return userRepository.findByLastnameContainingIgnoreCase(lastname)
+    }
+
+    fun getUserByEmail(email: String): List<User> {
+        return userRepository.findByEmailContainingIgnoreCase(email)
+    }
+
+    fun getUserByFirstnameAndLastnameAndEmail(firstname: String, lastname: String, email: String): User? {
+        return userRepository.findByFirstnameContainingIgnoreCaseAndLastnameContainingIgnoreCaseAndEmailContainingIgnoreCase(
+            firstname,
+            lastname,
+            email
+        )
     }
 
     fun createUser(user: User): User {

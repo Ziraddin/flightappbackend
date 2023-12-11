@@ -8,7 +8,7 @@ import jakarta.persistence.*
 data class Payment(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    var id: Int? = null,
     var paymentType: String? = null,
     @OneToMany(mappedBy = "payment")
     @JsonIgnore

@@ -9,7 +9,7 @@ import org.springframework.data.relational.core.mapping.Table
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Int? = null,
     var firstname: String? = null,
     var lastname: String? = null,
     var email: String? = null,
