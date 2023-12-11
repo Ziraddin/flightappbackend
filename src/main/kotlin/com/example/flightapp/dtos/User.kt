@@ -18,7 +18,7 @@ data class User(
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     val transactions: List<Transaction>? = null,
-    @ManyToOne
+    @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "paymentid")
-    val payment: Payment? = null
+    var payment: Payment? = null
 )
