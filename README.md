@@ -31,7 +31,7 @@ Ensure you have the following installed:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/flight-app-backend.git
+git clone https://github.com/Ziraddin/flightappbackend.git
 cd flight-app-backend
 ```
 
